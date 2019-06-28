@@ -1,2 +1,2 @@
 # Data-Structures-and-Algorithms-in-Python
-Jupyter notebook for exercises.
+Jupyter notebook(in `notebooks`) and source code(in `source_code`)for exercises(Reinforcement and Creativity).
