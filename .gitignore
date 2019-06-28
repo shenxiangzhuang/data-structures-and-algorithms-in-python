@@ -3,3 +3,16 @@
 
 # checkpoint
 .ipynb_checkpoints/
+
+# vscode config
+.vscode/
+
+# test folder
+test/
+
+# pkg cache
+.hypothesis
+
+# cache
+source_code/.cache
+source_code/__pycache__
