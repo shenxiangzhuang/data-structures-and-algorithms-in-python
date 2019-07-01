@@ -99,10 +99,10 @@ def multiply(m: int, n: int) -> int:
     return m + multiply(m, n-1)
 
 # C-4.15
-def get_subsets_1(s: List[Any], n: int) -> List[Any]:
+def get_subsets(s: List[Any], n: int) -> List[Any]:
     if n == 0:
         return [[]]
-    return [[s[n-1]] + i for i in get_subsets_1(s, n-1)] + get_subsets_1(s, n-1)
+    return [[s[n-1]] + i for i in get_subsets(s, n-1)] + get_subsets(s, n-1)
 
 
 # C-4.16
