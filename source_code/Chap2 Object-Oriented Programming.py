@@ -7,6 +7,7 @@ from random import randint
 import matplotlib.pyplot as plt
 Num = TypeVar('Num', int, float)
 
+
 # R-2.4
 class Flower:
     def __init__(self, name: str, n_petals: int, price: Num) -> None:
@@ -17,7 +18,7 @@ class Flower:
     def get_name(self) -> str:
         '''get flower name'''
         return self._name
-    
+
     def set_name(self, name: str) -> None:
         '''set flower name'''
         self._name = name
@@ -27,7 +28,7 @@ class Flower:
         return self._n_petals
 
     def set_n_petals(self, n_petals: int) -> None:
-        '''set the num of flower'petrals'''        
+        '''set the num of flower'petrals'''
         self._n_petals = n_petals
 
     def get_price(self) -> Num:
@@ -37,6 +38,7 @@ class Flower:
     def set_price(self, price) -> None:
         '''set flower price'''
         self._price = price
+
 
 # R-2.5, 2.6, 2.7
 class CrediCart:
@@ -51,7 +53,7 @@ class CrediCart:
         """Charge given price to the card, assuming sufficient credit limit.
         Return True if charge was processed; False if charge was denied.
         """
-        try: 
+        try:
             assert isinstance(price, (int, float, complex))
         except AssertionError:
             print("The price must be a number!")
@@ -67,7 +69,7 @@ class CrediCart:
 
     def make_payment(self, amount):
         # is a number or not
-        try: 
+        try:
             assert isinstance(amount, numbers.Number)
         except AssertionError:
             print("The amount must be a number!")
@@ -78,6 +80,7 @@ class CrediCart:
             raise ValueError("amount must be a positive number")
         """Process customer payment that reduces balance."""
         self._balance -= amount
+
 
 # R-2.9 -> R-2.15
 class Vector:
@@ -91,35 +94,33 @@ class Vector:
         else:
             raise ValueError("Vector must be initialized by a int or list!")
 
-
     def __repr__(self) -> str:
         return repr(self._data).replace('[', '<').replace(']', '>')
-    
+
     def __len__(self):
         return self._len
 
     def __getitem__(self, index: int) -> Num:
         return self._data[index]
-    
+
     def __setitem__(self, index: int, value: Num) -> None:
         self._data[index] = value
-    
+
     def __add__(self, v: 'Vector') -> 'Vector':
         """
         >>> v1 = Vector([1, 2, 3])
         >>> v2 = Vector([1, 1, 1])
         >>> v1 + v2
         <2, 3, 4>
-        """        
+        """
         assert len(self) == len(v)
         result = Vector(self._len)
         for i in range(len(self)):
             result[i] = self._data[i] + v[i]
         return result
-    
+
     def __radd__(self, v: 'Vector') -> 'Vector':
         return self.__add__(v)
-        
 
     def __sub__(self, v: 'Vector') -> 'Vector':
         """
@@ -143,7 +144,7 @@ class Vector:
         for index, value in enumerate(self._data):
             result[index] = -value
         return result
-    
+
     def __mul__(self, factor: Union[int, 'Vector']) -> Union[int, 'Vector']:
         """multiply with an int or vector.
         >>> v1 = Vector([1, 2, 3])
@@ -165,7 +166,7 @@ class Vector:
             result = Vector(self._len)
             for index, value in enumerate(self._data):
                 result[index] = factor * value
-            return result                   
+            return result
 
     def __rmul__(self, factor: Union[int, 'Vector']) -> Union[int, 'Vector']:
         return self.__mul__(factor)
@@ -175,7 +176,7 @@ class Vector:
 class Progression:
     def __init__(self, start=0):
         self._current = start
-    
+
     def _advance(self):
         self._current += 1
 
@@ -200,15 +201,18 @@ class FibonacciProgression(Progression):
         # start progression at first
         super().__init__(first)
         self._prev = second - first
-    
+
     def _advance(self):
         self._prev, self._current = self._current, self._current + self._prev
+
+
 # The solution
-#fib = FibonacciProgression(2, 2)
-#fib.print_progression(8)
+# fib = FibonacciProgression(2, 2)
+# fib.print_progression(8)
 
 # R-2.19
-steps = 2 ** (63 - 7)
+steps = 2**(63 - 7)
+
 
 # C-2.26
 class ReversedSequenceIterator:
@@ -223,7 +227,7 @@ class ReversedSequenceIterator:
     def __next__(self):
         """Return the next element(with reversed order), or else
         raise StopIteration error"""
-        self._k  -= 1
+        self._k -= 1
         if self._k >= 0:
             return self._seq[self._k]
         else:
@@ -231,6 +235,7 @@ class ReversedSequenceIterator:
 
     def __iter__(self):
         return self
+
 
 # R-2.27
 class Range:
@@ -243,7 +248,8 @@ class Range:
             start, stop = 0, start
         # calculate the effective length once
         self._length = max(0, (step - start + step - 1) // step)
-        # need knowledge of the start and step(but not stop) to support __getitem__
+        # need knowledge of the start and step(but not stop)
+        # to support __getitem__
         self._start = start
         self._step = step
         # for __contains
@@ -261,7 +267,7 @@ class Range:
             raise IndexError("index out of range")
 
         return self._start + k * self._step
-    
+
     def __contains__(self, x):
         if not self._start <= x < self._stop:
             return False
@@ -269,7 +275,7 @@ class Range:
             return True
         else:
             return False
-    
+
     @staticmethod
     def test_contains(start=0, stop=10000000, step=1, test_n=50):
         xs = sorted([randint(start, stop) for i in range(test_n)])
@@ -282,6 +288,7 @@ class Range:
         plt.plot(xs, times)
         plt.ylim(0, 0.00002)
         plt.show()
+
 
 # C-2.31
 class AbsdiffPrograssion(Progression):
@@ -302,6 +309,7 @@ class AbsdiffPrograssion(Progression):
             self._prev1, self._prev2 = self._current, self._prev1
             self._current = abs(self._prev1 - self._prev2)
         self._count += 1
+
 
 # C-2.32
 class SquareRootProgression(Progression):

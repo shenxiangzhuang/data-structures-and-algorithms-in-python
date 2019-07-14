@@ -4,16 +4,18 @@ import matplotlib.pyplot as plt
 from typing import List, TypeVar
 Num = TypeVar('Num', int, float)
 
+
 # R-3.1
 def plot_loglog():
     xs = range(1, 100)
-    plt.loglog(xs, [8*x for x in xs], basex=2, basey=2)
-    plt.loglog(xs, [4*x*np.log2(x) for x in xs], basex=2, basey=2)
-    plt.loglog(xs, [2*(x**2) for x in xs], basex=2, basey=2)
+    plt.loglog(xs, [8 * x for x in xs], basex=2, basey=2)
+    plt.loglog(xs, [4 * x * np.log2(x) for x in xs], basex=2, basey=2)
+    plt.loglog(xs, [2 * (x**2) for x in xs], basex=2, basey=2)
     plt.loglog(xs, [x**3 for x in xs], basex=2, basey=2)
     plt.loglog(xs, [2**x for x in xs], basex=2, basey=2)
     plt.legend(['$8n$', '$4n\\logn$', '$2n^2$', '$n^3$', '2^n'])
     plt.show()
+
 
 # R-3.2
 # n0 = 16
@@ -45,6 +47,7 @@ def get_time_complexity_1(n, func):
     plt.title(func.__name__)
     plt.show()
 
+
 def example1(S):
     """Return the sum of the elements in sequence S."""
     n = len(S)
@@ -54,6 +57,7 @@ def example1(S):
         total += S[j]
         count += 1
     return total, count
+
 
 def example2(S):
     """Return the sum of the elemnets in sequnce S."""
@@ -65,16 +69,18 @@ def example2(S):
         count += 1
     return total, count
 
+
 def example3(S):
     """Return the sum of the elemnets in sequnce S."""
     n = len(S)
     total = 0
     count = 0
     for j in range(n):
-        for k in range(1+j):
+        for k in range(1 + j):
             total += S[j]
             count += 1
     return total, count
+
 
 def example4(S):
     """Return the sum of the elemnets in sequnce S."""
@@ -97,12 +103,13 @@ def example5(A, B):
     for i in range(n):
         total = 0
         for j in range(n):
-            for k in range(1+j):
+            for k in range(1 + j):
                 total += A[k]
                 num_calc += 1
         if B[i] == total:
-            count+=1
+            count += 1
     return count, num_calc
+
 
 def get_time_complexity_2(n=100):
     op_nums = []
@@ -118,6 +125,7 @@ def get_time_complexity_2(n=100):
     plt.title('example5')
     plt.show()
 
+
 # R-3.32
 # O(n^2)
 
@@ -127,18 +135,21 @@ def get_time_complexity_2(n=100):
 # R-3.34
 # O(logn)
 
+
 # C-3.35
 def disjoint(a: List[Num], b: List[Num], c: List[Num]) -> bool:
     all_nums = sorted(a + b + c)
     for i in range(2, len(all_nums)):
-        if all_nums[i] == all_nums[i-1] == all_nums[i-2]:
+        if all_nums[i] == all_nums[i - 1] == all_nums[i - 2]:
             return False
     return True
+
 
 # C-3.36
 # O(nlogn)
 def max_ten_1(nums: List[Num]) -> List[Num]:
     return sorted(nums)[-10:]
+
 
 # O(n)
 def max_ten_2(nums: List[Num]) -> List[Num]:
@@ -155,20 +166,22 @@ def min_max(nums: List[Num]) -> List[Num]:
     min_num = math.inf
     max_num = -math.inf
     for i in range(1, len(nums), 2):
-        if nums[i] >= nums[i-1]:
-            min_num = min(min_num, nums[i-1])
+        if nums[i] >= nums[i - 1]:
+            min_num = min(min_num, nums[i - 1])
             max_num = max(max_num, nums[i])
         else:
             min_num = min(min_num, nums[i])
-            max_num = max(max_num, nums[i-1])
+            max_num = max(max_num, nums[i - 1])
     # when len(nums) is odd
     # we have to handle the last element
     min_num = min(min_num, nums[-1])
     max_num = max(max_num, nums[-1])
     return [min_num, max_num]
 
+
 # C-3.42
 # n(n-1)/2 +１
+
 
 # C-3.45
 def find_miss(nums: List[Num]) -> Num:
@@ -177,14 +190,15 @@ def find_miss(nums: List[Num]) -> Num:
     total = 0
     for i in range(m):
         total += nums[i]
-    return m*(m + 1) // 2 - total
+    return m * (m + 1) // 2 - total
 
 
 # C3.53
 def get_plan(n):
     person_num = len(str(bin(n))) - 2
-    for i in range(n+1):
+    for i in range(n + 1):
         print(str(bin(i))[2:].rjust(person_num, '0'))
+
 
 # C3.54
 def get_most_freq_num(nums: List[int]) -> int:
