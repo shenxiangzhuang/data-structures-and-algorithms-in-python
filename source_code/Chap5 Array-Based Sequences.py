@@ -1,5 +1,6 @@
 import sys
 import pandas as pd
+import random
 from time import time
 import ctypes
 from typing import List, TypeVar
@@ -147,7 +148,7 @@ def insert_average(n, mode='start'):
         for _ in range(n):
             data.insert(n//2, None)
     elif mode == 'end':
-        for _ in range(n):        
+        for _ in range(n):
             data.insert(n, None)
     end = time()
     return (end - start) * 1000000 / n
@@ -200,3 +201,78 @@ def sum_matrix_plus(matrix: List[List[Num]]) -> Num:
 
 
 # C-5.14
+def shuffule(nums: List[Num]) -> List[Num]:
+    return sorted(nums, key=lambda x: random.random())
+
+
+# C-5.16
+class DynamicArrayInsertPop(DynamicArrayInsert):
+    """
+    Implement a pop method for the DynamicArray class.
+    """
+    def __init__(self):
+        """Create an empty array"""
+        super().__init__()
+
+    def pop(self):
+        element = self._A.pop()
+        if self._n < self._capacity // 4:
+            self._resize(self._capacity // 2)
+        return element
+
+
+# C-5.21
+document = 'Hello, World!' * 1000
+
+
+def w1_concatenation():
+    """
+    1.95 ms ± 146 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    """
+    letters = ''
+    for c in document:
+        if c.isalpha():
+            letters += c
+    return letters
+
+
+def w2_appending():
+    """
+    1.71 ms ± 155 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    """
+    temp = []
+    for c in document:
+        if c.isalpha():
+            temp.append(c)
+    letters = ''.join(temp)
+    return letters
+
+
+def w3_list_comp():
+    """
+    1.26 ms ± 223 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    """
+    letters = ''.join([c for c in document if c.isalpha()])
+    return letters
+
+
+def w4_generator():
+    """
+    1.66 ms ± 318 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    """
+    letters = ''.join(c for c in document if c.isalpha())
+    return letters
+
+
+# C-5.31
+def binary_sum(S: List[List[float]], start: int, stop: int) -> float:
+    if start >= stop:
+        return 0
+    if start == stop - 1:
+        return sum(S[start])
+    else:
+        mid = (start + stop) // 2
+        return binary_sum(S, start, mid) + binary_sum(S, mid, stop)
+
+
+binary_sum([[1.0, 2], [3, 4]], 0, 2)
