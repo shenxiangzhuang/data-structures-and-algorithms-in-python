@@ -21,4 +21,4 @@ data structures used in the textbook.
 You can clone the repository to your PC then run `pip install -e pkg` in the folder to install the package `pyds` in development mode. Read pip' doc for more information. After that, we can use `import pyds` freely.
 
 
-[Chap6 Stacks&Queues&Deques](https://nbviewer.jupyter.org/github/shenxiangzhuang/Data-Structures-and-Algorithms-in-Python/blob/master/notebooks/Chap6%Stacks&Queues&Deques.ipynb)
+[Chap6 Stacks&Queues&Deques](https://nbviewer.jupyter.org/github/shenxiangzhuang/Data-Structures-and-Algorithms-in-Python/blob/master/notebooks/Chap6%20Stacks%26Queues%26Deques.ipynb)
