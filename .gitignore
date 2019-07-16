@@ -16,3 +16,5 @@ test/
 # cache
 source_code/.cache
 source_code/__pycache__
+.pytest_cache
+pkg/pyds/__pycache__
