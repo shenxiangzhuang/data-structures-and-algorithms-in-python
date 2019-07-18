@@ -9,12 +9,13 @@
 
 # test folder
 test/
+# but not pkg etst
+!pkg/test
 
 # pkg cache
 .hypothesis
 
 # cache
 source_code/.cache
-source_code/__pycache__
 .pytest_cache
-pkg/pyds/__pycache__
+__pycache__
