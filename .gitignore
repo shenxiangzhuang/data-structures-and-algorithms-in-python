@@ -19,3 +19,4 @@ test/
 source_code/.cache
 .pytest_cache
 __pycache__
+.idea

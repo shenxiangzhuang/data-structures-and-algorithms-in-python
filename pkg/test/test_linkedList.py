@@ -1,5 +1,6 @@
 import unittest
 from pyds.LinkedLists import Singlellist
+from pyds.LinkedLists import Doublellist
 
 
 class testSinglellist(unittest.TestCase):
@@ -95,3 +96,83 @@ class testSinglellist(unittest.TestCase):
         sll = Singlellist([1, 2, 3])
         self.assertTrue(1 in sll)
         self.assertFalse(0 in sll)
+
+
+class testDoblellist(unittest.TestCase):
+    def test_init(self):
+        dll = Doublellist()
+        self.assertEqual(str(dll), "Header->Tailer")
+        self.assertEqual(len(dll), 0)
+        self.assertEqual(dll.is_empty(), True)
+
+    def test_addfirst(self):
+        dll = Doublellist()
+        dll.add_first(1)
+        self.assertEqual(dll.first(), 1)
+
+    def test_addlast(self):
+        dll = Doublellist()
+        dll.add_last(1)
+        self.assertEqual(dll.last(), 1)
+
+    def test_insert_after(self):
+        dll = Doublellist()
+        dll.add_first(1)
+        dll.insert_after(1, 2)
+        self.assertEqual(dll.last(), 2)
+
+    def test_remove_first(self):
+        dll = Doublellist()
+        dll.add_first(1)
+        dll.add_last(2)
+        dll.remove_first()
+        self.assertEqual(dll.first(), 2)
+
+    def test_remove_last(self):
+        dll = Doublellist()
+        dll.add_first(1)
+        dll.add_last(2)
+        dll.remove_last()
+        self.assertEqual(dll.first(), 1)
+
+    def test_remove(self):
+        dll = Doublellist()
+        dll.add_last(1)
+        dll.add_last(2)
+        dll.add_last(1)
+        dll.remove(1)
+        self.assertEqual(dll.first(), 2)
+        self.assertEqual(dll.last(), 1)
+
+    def test_remove_all(self):
+        dll = Doublellist()
+        dll.add_last(1)
+        dll.add_last(2)
+        dll.add_last(1)
+        dll.remove_all(1)
+        self.assertEqual(dll.last(), 2)
+        self.assertEqual(len(dll), 1)
+
+    def test_change(self):
+        dll = Doublellist()
+        dll.add_last(1)
+        dll.add_last(2)
+        dll.add_last(1)
+        dll.change(1, 0)
+        self.assertEqual(dll.first(), 0)
+        self.assertEqual(dll.last(), 1)
+
+    def test_change_all(self):
+        dll = Doublellist()
+        dll.add_last(1)
+        dll.add_last(2)
+        dll.add_last(1)
+        dll.change_all(1, 0)
+        self.assertEqual(dll.first(), 0)
+        self.assertEqual(dll.last(), 0)
+
+    def test_search(self):
+        dll = Doublellist()
+        self.assertFalse(1 in dll)
+        dll.add_first(1)
+        self.assertTrue(1 in dll)
