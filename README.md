@@ -27,3 +27,5 @@ You can clone the repository to your PC then run `pip install -e pkg` in the fol
 The pkg is moved to a new repo named [ToyData](https://github.com/shenxiangzhuang/ToyData), you can clone it and install locally. (When the project is finished, I will push it to pip and you can install it by `pip` directly.)
 
 [Chap6 Stacks&Queues&Deques](https://nbviewer.jupyter.org/github/shenxiangzhuang/Data-Structures-and-Algorithms-in-Python/blob/master/notebooks/Chap6%20Stacks%26Queues%26Deques.ipynb)
+
+[Chap7 Linked Lists](https://nbviewer.jupyter.org/github/shenxiangzhuang/Data-Structures-and-Algorithms-in-Python/blob/master/notebooks/Chap7%20Linked%20Lists.ipynb)
