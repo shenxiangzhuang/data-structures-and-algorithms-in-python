@@ -76,7 +76,7 @@ def example3(S):
     total = 0
     count = 0
     for j in range(n):
-        for k in range(1 + j):
+        for _ in range(1 + j):
             total += S[j]
             count += 1
     return total, count
@@ -187,7 +187,7 @@ def min_max(nums: List[Num]) -> List[Num]:
 def find_miss(nums: List[Num]) -> Num:
     # (n-1) -> m
     m = len(nums)
-    total = 0
+    total: float = 0
     for i in range(m):
         total += nums[i]
     return m * (m + 1) // 2 - total

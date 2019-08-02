@@ -29,7 +29,7 @@ def test_array_2(n=27):
             max_size = b
         if b > max_size:
             print('Length: {0:3d}; Size in bytes: {1:4d}'
-                  .format(a-1, max_size))
+                  .format(a - 1, max_size))
             max_size = b
         data.append(None)
 
@@ -109,14 +109,14 @@ class DynamicArrayInsert(DynamicArray):
             for i in range(k):
                 B[i] = self._A[k]
             B[k] = value
-            for j in range(k+1, self._n+1):
-                B[j] = self._A[j-1]
+            for j in range(k + 1, self._n + 1):
+                B[j] = self._A[j - 1]
             self._A = B
             self._n += 1
             self._capacity *= 2
         else:
             for i in range(self._n, k, -1):
-                self._A[i] = self._A[i-1]
+                self._A[i] = self._A[i - 1]
             self._A[k] = value
             self._n += 1
 
@@ -124,7 +124,7 @@ class DynamicArrayInsert(DynamicArray):
 # R-5.7
 def find_dup(nums):
     n = len(nums)
-    return sum(nums) - n*(n-1) // 2
+    return sum(nums) - n * (n - 1) // 2
 
 
 # R-5.8
@@ -146,7 +146,7 @@ def insert_average(n, mode='start'):
             data.insert(0, None)
     elif mode == 'middle':
         for _ in range(n):
-            data.insert(n//2, None)
+            data.insert(n // 2, None)
     elif mode == 'end':
         for _ in range(n):
             data.insert(n, None)
@@ -188,7 +188,7 @@ class CaeserCipher:
 
 # R-5.11
 def sum_matrix(matrix: List[List[Num]]) -> Num:
-    result = 0
+    result: float = 0
     for raw in matrix:
         for num in raw:
             result += num

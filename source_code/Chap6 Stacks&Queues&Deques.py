@@ -1,4 +1,4 @@
-from pyds.Stack import ArrayStack
+from toydata.Stack import ArrayStack
 from collections import deque
 
 # R-6.1

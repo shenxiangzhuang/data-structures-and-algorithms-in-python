@@ -24,6 +24,6 @@ data structures used in the textbook.
 You can clone the repository to your PC then run `pip install -e pkg` in the folder to install the package `pyds` in development mode. Read pip' doc for more information. After that, we can use `import pyds` freely.</del>
 
 
-The pkg is moved to a new repo named [ToyData](https://github.com/shenxiangzhuang/ToyData)
+The pkg is moved to a new repo named [ToyData](https://github.com/shenxiangzhuang/ToyData), you can clone it and install locally. (When the project is finished, I will push it to pip and you can install it by `pip` directly.)
 
 [Chap6 Stacks&Queues&Deques](https://nbviewer.jupyter.org/github/shenxiangzhuang/Data-Structures-and-Algorithms-in-Python/blob/master/notebooks/Chap6%20Stacks%26Queues%26Deques.ipynb)

@@ -43,8 +43,8 @@ def char_to_int(char: str) -> int:
 def str_to_int(string: str, n: int) -> int:
     if n == 1:
         return char_to_int(string[0])
-    return char_to_int(string[n-1]) * (10 ** (n-1)) \
-        + str_to_int(string, n-1)
+    return char_to_int(string[n - 1]) * (10 ** (n - 1)) \
+        + str_to_int(string, n - 1)
 
 
 # R-4.8
